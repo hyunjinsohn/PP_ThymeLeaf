@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Wish shop project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
+<link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../styles/product.css">
+<link rel="stylesheet" type="text/css" href="../styles/product_responsive.css">
+</head>
+<body>
+<div class="super_container">
+<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../images/categories.jpg" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_container">
+						<div class="home_content">
+							<div class="home_title">Woman</div>
+							<div class="breadcrumbs">
+								<ul>
+									<li><a href="index.html">Home</a></li>
+									<li>Woman</li>
+									<li>Accessories</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="content">
+      <div id="gallery">
+        <figure>
+          <header class="heading">
+            <form method="post" action="/goods/goods_find" class="inline">
+              <input type=text name=address size=20 class="input-sm">
+              <input type=submit value="검색" class="btn btn-sm btn-primary">
+            </form>
+          </header>
+          <ul class="nospace clear">
+            <li th:each="vo,i:${list}" th:class="${i.index%4==0}?'one_quarter first':'one_quarter'">
+            	<a th:href="@{/goods/goods_detail(gno=${vo.gno})}">
+            		<img th:src="${vo.poster}" th:title="${vo.name}">
+            	</a>
+            </li>
+          </ul>
+          <figcaption></figcaption>
+        </figure>
+      </div>
+      <nav class="pagination">
+        <ul>
+          <li th:if="${startPage>1}"><a th:href="@{/goods/goods_find(page=${startPage-1},name=${name})}">&laquo; Previous</a></li>
+          <li th:class="${curpage==i}?'current':''" th:each="i:${#numbers.sequence(startPage,endPage)}"><a th:href="@{/goods/goods_find(page=${i},name=${name})}" th:text="${i}"></a></li>
+          <li th:if="${endPage<totalpage}"><a th:href="@{/food/food_find(page=${endPage+1},address=${address})}">Next &raquo;</a></li>
+        </ul>
+      </nav>
+    </div>
+</div>
+</body>
+</html>

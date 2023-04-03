@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="super_container">
+   <div class="home">
+		
+		<!-- Home Slider -->
+
+		<div class="home_slider_container">
+			<div class="owl-carousel owl-theme home_slider">
+				
+				<!-- Home Slider Item -->
+				<div class="owl-item">
+					<div class="home_slider_background" style="background-image:url(https://minitmute.com/web/mainSlide/ss1.JPG)"></div>
+					<div class="home_slider_content">
+						<div class="home_slider_content_inner">
+							<div class="home_slider_subtitle">Promo Prices</div>
+							<div class="home_slider_title">New Collection</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+			
+			<!-- Home Slider Nav -->
+
+			<div class="home_slider_next d-flex flex-column align-items-center justify-content-center"><img src="../images/arrow_r.png" alt=""></div>
+		</div>
+	</div>
+   	<div class="arrivals">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title_container text-center">
+						<div class="section_subtitle">only the best</div>
+						<div class="section_title">new arrivals</div>
+					</div>
+				</div>
+			</div>
+			<div class="row products_container">
+				<!-- Product -->
+				<div class="col-lg-4 product_col" th:each="vo:${list}">
+					<div class="product">
+						<div class="product_image">
+						  <a th:href="@{/goods/goods_detail(gno=${vo.gno})}"> 
+							<img th:src="${vo.poster}">
+						  </a> 
+						</div>
+						<div class="product_content clearfix">
+							<div class="product_info">
+								<div class="product_name text-center" th:text="${vo.name}"></div>
+								<!-- <div class="product_price" th:text="${vo.price}"></div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Extra -->
+
+	<div class="extra clearfix">
+		<div class="extra_promo extra_promo_1">
+			<div class="extra_promo_image" style="background-image:url(images/minitmute_img1.jpg)"></div>
+		</div>
+		<div class="extra_promo extra_promo_2">
+			<div class="extra_promo_image" style="background-image:url(images/minitmute_img2.jpg)"></div>
+			<div class="extra_2_content d-flex flex-column align-items-center justify-content-center text-center">
+			</div>
+		</div>
+	</div>
+
+	<!-- Gallery -->
+
+	<div class="gallery">
+		<div class="gallery_image" style="background-image:url(images/minitmute_img2.jpg)"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="gallery_title text-center">
+					</div>
+					<div class="gallery_text text-center">*Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra.</div>
+					<div class="button gallery_button"><a href="#">submit</a></div>
+				</div>
+			</div>
+		</div>	
+
+	</div>
+</div>
+</body>
+</html>

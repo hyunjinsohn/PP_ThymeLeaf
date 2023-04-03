@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Wish shop project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/cart.css">
+<link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
+</head>
+<body>
+<!-- 
+		qno int AI PK 
+		subject varchar(1000) 
+		content text 
+		pwd varchar(34) 
+		regdate datetime 
+		id varchar(34)
+ -->
+<div class="super_container">
+<!-- <header class="header">
+		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
+			<div class="logo"><a th:href="@{/}">minitmute</a></div>
+			<nav class="main_nav">
+				<ul>
+					<li><a th:href="@{/goods/goods_list}">all items</a></li>
+					<li><a href="categories.html">clothes</a></li>
+					<li><a href="categories.html">accessories</a></li>
+					<li><a th:href="@{/qna/qna_list}">community</a></li>
+				</ul>
+			</nav>
+			<div class="header_content ml-auto">
+				<div class="search header_search">
+					<form action="#">
+						<input type="search" class="search_input" required="required">
+						<button type="submit" id="search_button" class="search_button"><img src="images/magnifying-glass.svg" alt=""></button>
+					</form>
+				</div>
+				<div class="shopping">
+					Cart
+					<a href="#">
+						<div class="cart">
+							<img src="images/shopping-bag.svg" alt="">
+							<div class="cart_num_container">
+								<div class="cart_num_inner">
+									<div class="cart_num">1</div>
+								</div>
+							</div>
+						</div>
+					</a>
+					Star
+					<a href="#">
+						<div class="star">
+							<img src="images/star.svg" alt="">
+							<div class="star_num_container">
+								<div class="star_num_inner">
+									<div class="star_num">0</div>
+								</div>
+							</div>
+						</div>
+					</a>
+					Avatar
+					<a href="#">
+						<div class="avatar">
+							<img src="images/avatar.svg" alt="">
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
+		</div>
+	</header> -->
+
+	<!-- Menu -->
+
+	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+		<div class="logo menu_mm"><a href="#">Wish</a></div>
+		<div class="search">
+			<form action="#">
+				<input type="search" class="search_input menu_mm" required="required">
+				<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="images/magnifying-glass.svg" alt=""></button>
+			</form>
+		</div>
+		<nav class="menu_nav">
+			<ul class="menu_mm">
+				<li class="menu_mm"><a th:href="@{/goods/goods_list}">all items</a></li>
+				<li class="menu_mm"><a href="#">clothes</a></li>
+				<li class="menu_mm"><a href="#">accessories</a></li>
+				<li class="menu_mm"><a th:href="@{/qna/qna_list}">community</a></li>
+			</ul>
+		</nav>
+	</div>
+    <table class="table" style="margin-top:250px">
+      <tr>
+        <td><a href="/qna/qna_insert" class="btn btn-sm btn-primary">새글</a></td>
+      </tr>
+    </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="10%" class="text-center">번호</th>
+          <th width="50%" class="text-center">제목</th>
+          <th width="20%" class="text-center">아이디</th>
+          <th width="20%" class="text-center">작성일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="vo:${list}">
+          <td width="10%" class="text-center" th:text="${vo.qno}"></td>
+          <td width="50%"><a th:href="@{/qna/qna_detail(qno=${vo.qno})}" th:text="${vo.subject}"></a></td>
+          <td width="20%" class="text-center" th:text="${vo.id}">아이디</td>
+          <td width="20%" class="text-center" th:text="${vo.regdate}">작성일</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5" class="text-right">
+            <a th:href="@{/qna/qna_list(page=${curpage>1?curpage-1:curpage})}" class="btn btn-sm btn-danger">이전</a>
+            	<span th:text="${curpage}"></span> page / <span th:text="${totalpage}"></span> pages
+            <a th:href="@{/qna/qna_list(page=${curpage<totalpage?curpage+1:curpage})}" class="btn btn-sm btn-success">다음</a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+</div>
+</body>
+</html>
