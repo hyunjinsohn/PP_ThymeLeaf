@@ -9,4 +9,4 @@
 
 3. ThymeLeaf를 활용하여 상품 목록페이지 구현
 
-4. ThymeLeaf를 활용하여 상품 상세페이지 구
+4. ThymeLeaf를 활용하여 상품 상세페이지 구현
